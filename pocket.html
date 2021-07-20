@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>.::Benjamin a Padaria :: Sp @brasil ::.</title>
+      <!-- Plugins CSS -->
+      <link href="css/plugins/benja-plugins.css" rel="stylesheet">
+      <link href="css/plugins/plugins.css" rel="stylesheet">
+      <!--slider revolution-->
+      <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
+      <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
+      <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.css">
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/style-restaurant.css" rel="stylesheet">
+      <link href="css/benja-style.css" rel="stylesheet">
+      <link href="css/benjamin-restaurant.css" rel="stylesheet">
+      <script src="js/angular.min.js"></script>
+      <script src="js/crypto.js"></script>
+      <script type="text/javascript">
+         var nome_importado = "Benjamin";
+         var endereco_site = "https://benjamin-a-padaria.herokuapp.com/";
+      </script>
+      <script type="text/javascript">
+
+         var produtos = new Array();
+         produtos[0] = {
+          "CODE":0,
+          "VALUE":10.00,
+          "NAME" : "CROISS",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Croissant"   
+          };
+          produtos[1] = {
+          "CODE":1,
+          "VALUE":10.00,
+          "NAME" : "ACAI COM BANAN",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Açai com bananas"   
+          };
+          produtos[2] = {
+          "CODE":2,
+          "VALUE":14.00,
+          "NAME" : "SANDUI COM QUEI",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Sanduiche natural com queijo"   
+          };
+          produtos[3] = {
+          "CODE":3,
+          "VALUE":17.00,
+          "NAME" : "BEN ALMOÇO",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Ben Almoço do dia"   
+          };
+          produtos[4] = {
+          "CODE":4,
+          "VALUE":6.49,
+          "NAME" : "PASTEL DE NADA",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Pastelzinho de Belem"   
+          };
+          
+          produtos[5] = {
+          "CODE":5,
+          "VALUE":14.90,
+          "NAME" : "BIG BEN",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Big Ben"   
+          };
+          produtos[6] = {
+          "CODE":6,
+          "VALUE":2.99,
+          "NAME" : "MINI CROISS CHOC",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Mini Croissant Chocolate"   
+          };
+          
+          produtos[7] = {
+          "CODE":7,
+          "VALUE":11.00,
+          "NAME" : "ACAI COM MEL",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Açai com mel"   
+          };
+          
+          produtos[8] = {
+          "CODE":8,
+          "VALUE":14.00,
+          "NAME" : "SANDUI COM QUEI e PRES",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Sanduiche natural com queijo e presunto"   
+          };
+         
+          produtos[9] = {
+          "CODE":9,
+          "VALUE":14.90,
+          "NAME" : "SANDUI COM QUEI e PRES e TOM",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Sanduiche natural com queijo , presunto e tomate"   
+          };
+          
+          produtos[10] = {
+          "CODE":10,
+          "VALUE":14.90,
+          "NAME" : "SANDUI COM QUEI e PRES e TOM e ALF",
+          "QTD" : 1,
+          "PRESENTATION_NAME" : "Sanduiche natural com queijo , presunto , tomate e tomate"   
+          };
+
+          produtos[11] = {
+          "CODE":111,
+          "VALUE":30.0,
+          "NAME" : "COMB 10 PAO Q",
+          "QTD" : 10,
+          "PRESENTATION_NAME" : "Combo 10 paẽs de queijo $30,00"   
+          };
+
+          produtos[12] = {
+          "CODE":112,
+          "VALUE":60.00,
+          "NAME" : "COMB 30 CAFE",
+          "QTD" : 30,
+          "PRESENTATION_NAME" : "Combo 30 café $60,00"   
+          };
+
+          produtos[13] = {
+            "CODE":1020,
+            "VALUE":-1,
+            "NAME" : "1 BENCREDITOS",
+            "QTD" : 1,
+            "PRESENTATION_NAME" : "1 Bencrédito"   
+          };
+
+          produtos[14] = {
+            "CODE":1021,
+            "VALUE":-10,
+            "NAME" : "10 BENCREDITOS",
+            "QTD" : 1,
+            "PRESENTATION_NAME" : "10 Bencréditos"   
+          };
+          
+         
+          var catalogo = new Array();
+          catalogo[0] = [1,2,3,4,6];
+          catalogo[1] = [1,2];
+          
+          var campanhas = []
+          campanhas[0] = {
+          "CODE":0,
+          "NAME" : "CROISSANT",
+          "DESCRIPTION" : "nossos Croissants" ,
+          "PRODUCTS" : [0,6]
+          
+          };
+          campanhas[1] = {
+          "CODE":1,
+          "NAME" : "AÇAIS",
+          "DESCRIPTION" : "nossos açais" ,
+          "PRODUCTS" : [1,7]
+          
+          };
+          
+          campanhas[2] = {
+          "CODE":2,
+          "NAME" : "SANDUICHE",
+          "DESCRIPTION" : "nossos sanduiches" ,
+          "PRODUCTS" : [2,8 , 9, 10]
+          
+          };
+
+          campanhas[3] = {
+          "CODE":3,
+          "NAME" : "Combos",
+          "DESCRIPTION" : "Descontos na quantidade" ,
+          "PRODUCTS" : [11, 12]
+          
+          };
+          
+          
+          var campanhas_lojas = [];
+          campanhas_lojas[0] = [0,1,2,3];
+          campanhas_lojas[2] = [1];
+          campanhas_lojas[3] = [2];
+          
+          function getLocalData(name){
+          return localStorage.getItem(name)
+          }
+          
+          function setLocalData(name,value){
+          if (value!=null)
+          localStorage.setItem(name,value);
+          else
+          localStorage.removeItem(name);
+          }
+          
+          
+          var cartObj = null; // global pointer to cart
+          var cartCI = -1;
+          var str_botoes = '';
+          
+          
+          function cart_initCart() {
+          cartObj = new Array();
+          cartCI = 0;
+          // Check in browser memory if there are a saved cart
+          if (getLocalData("BENJAMIN_USERCART")!=null){
+          // if previoys cart is present load it
+          cartCI = getLocalData("BENJAMIN_USERCART_CI");
+          cartObj = JSON.parse(getLocalData("BENJAMIN_USERCART"));
+          user_vault = JSON.parse(getLocalData("BENJAMIN_USER_VAULT"));
+          console.log(cartObj);
+          }else{
+          console.log("\t[CART-BENJAMIN] Carrinho esta vazio!");
+          }
+          }
+          
+          
+          
+          function cart_removeCartRow_v2(rowid){
+          cartObj = JSON.parse(getLocalData("BENJAMIN_USERCART"));
+          cartObj[rowid]=null; // sign row as invalid
+          cartObj = cartObj.filter(function(x) { return x !== null }); 
+          setLocalData("BENJAMIN_USERCART",JSON.stringify(cartObj));
+          }
+          
+          
+          
+          angular.module('app', ["toastr"])
+          .service('ngCopy', ['$window', function ($window) {
+          var body = angular.element($window.document.body);
+          var textarea = angular.element('<textarea/>');
+          textarea.css({
+          position: 'fixed',
+          opacity: '0'
+          });
+          
+          return function (toCopy) {
+          textarea.val(toCopy);
+          body.append(textarea);
+          textarea[0].select();
+          
+          try {
+          var successful = document.execCommand('copy');
+          if (!successful) throw successful;
+          } catch (err) {
+          window.prompt("Copy to clipboard: Ctrl+C, Enter", toCopy);
+          }
+          
+          textarea.remove();
+          }
+          }])
+          .directive('ngClickCopy', ['ngCopy', function (ngCopy) {
+          return {
+          restrict: 'A',
+          link: function (scope, element, attrs) {
+          element.bind('click', function (e) {
+          ngCopy(attrs.ngClickCopy);
+          });
+          }
+          }
+          }])
+          .filter('trustAsHTML', ['$sce', function($sce){
+          return function(text) {
+              return $sce.trustAsHtml(text);
+          };
+          }])
+          .run(function($window, $rootScope) {
+                   $rootScope.online = navigator.onLine;
+                   $window.addEventListener("offline", function () {
+                     $rootScope.$apply(function() {
+                       $rootScope.online = false;
+                     });
+                   }, false);
+                   $window.addEventListener("online", function () {
+                     $rootScope.$apply(function() {
+                       $rootScope.online = true;
+                     });
+                   }, false);
+             })
+          .controller('CartController', function($sce,toastr, $http) {
+              var cart = this;
+              cart.produtos = produtos;
+              cart.catalogo = catalogo;
+              cart.campanhas = campanhas;
+              cart.campanhas_lojas = campanhas_lojas;
+              cart.carrinho = JSON.parse(getLocalData("BENJAMIN_USERCART"));
+              cart.cart_ci = JSON.parse(getLocalData("BENJAMIN_USERCART_CI"));
+              cart.user_vault = JSON.parse(getLocalData("BENJAMIN_USER_VAULT"));
+              cart.email_cliente = getLocalData("BENJAMIN_USERCART_EMAIL");
+              cart.logged_user_friends = JSON.parse(getLocalData("BENJAMIN_USERCART_LOGGED_USER_FRIENDS"));
+              cart.logged_user = JSON.parse(getLocalData("BENJAMIN_USERCART_LOGGED_USER"));
+              cart.total_descontos = getLocalData('total_descontos')?parseFloat(getLocalData('total_descontos')):0;
+              //if(cart.logged_user.wallet)
+              cart.creditos_disponiveis = cart.logged_user?cart.logged_user.wallet:0;
+              
+              
+              function getQueryParams(qs) {
+                //alert(qs);
+                if (qs != "") {
+                  qs = qs.replace("?","");
+                  qs = qs.split('=');
+                  console.log(qs);
+                  if(qs[0]=="usuario"){
+                    if(cart.logged_user){
+                   //  if(cart.email_cliente)
+                  var hash_email_cliente = Crypto.MD5(getLocalData("BENJAMIN_USERCART_EMAIL"));
+                    $http.get('/conectar/'+qs[1]+'/'+hash_email_cliente).then(function(data){
+                      cart.nome_indicado = data.data.name;
+                      });
+                      jQuery('#modal-conectar').modal('show');
+                    }else{
+                      cart.hash_indicado = qs[1];
+                      jQuery('#modal-registrar-indicado').modal('show');
+                    }
+                  }else if(qs[0]=="registrado"){
+                    jQuery('#modal-logar-registrado').modal('show');
+                  }
+                  return qs;
+                }else
+                  return "";
+                
+              }
+
+        // query = getQueryParams(document.location.search);
+        //alert(query);
+
+         getQueryParams(document.location.search);
+
+              
+
+              if(cart.email_cliente)
+              cart.hash_email_cliente = Crypto.MD5(getLocalData("BENJAMIN_USERCART_EMAIL"));
+              
+              function addItemInCart(code){
+                var newRow = new Object();
+                    newRow["CODE"] = code;
+                    newRow["PRESENTATION_NAME"] = produtos[code].PRESENTATION_NAME;
+                    newRow["VALUE"] = produtos[code].VALUE;
+                    newRow["QTD"] = produtos[code].QTD;
+                    
+                    console.log(newRow);
+              
+                    if (cartObj==null){
+                        cartObj = [];
+                    }
+              
+                    console.log(cartObj);
+                    cartObj[cartCI++] = newRow;
+                    console.log(cartObj);
+              
+                    setLocalData("BENJAMIN_USERCART",JSON.stringify(cartObj));
+                    setLocalData("BENJAMIN_USERCART_CI",cartCI);
+
+         
+              }
+
+
+              
+              function carrinho_local() {
+                cartObj = JSON.parse(getLocalData("BENJAMIN_USERCART"));
+                console.log(cartObj);
+              
+                var carrinho = new Array();
+                var grand_total = 0;
+                for (var xr in cartObj){
+                    if (cartObj[xr]==null) continue;
+              
+                    grand_total+=parseFloat(cartObj[xr].VALUE);
+                }
+              
+                return grand_total;
+              }
+              
+              cart.change_vouchers = function() {
+                console.log(cart.total_vouchers);
+                setLocalData("BENJAMIN_TOTAL_VOUCHERS",cart.total_vouchers);
+              };
+              
+              cart.add_origin = function(id){
+                addItemInCart(id);
+                cart.total = carrinho_local();
+                cart.carrinho = JSON.parse(getLocalData("BENJAMIN_USERCART")); 
+                navigator.vibrate([1000]);
+
+              }
+
+              cart.adicionar = function(id) {
+                cart.add_origin(id);
+                toastr.success('Seu Produto Esta no Seu Carrinho!', 'Produto Adicionado!');
+              };
+
+              cart.adicionar_desconto = function(id,valor) {
+                cart.total_descontos = parseFloat(cart.total_descontos)+parseFloat(valor);
+                cart.creditos_disponiveis = cart.creditos_disponiveis-valor;
+                setLocalData('total_descontos',cart.total_descontos);
+                cart.add_origin(id);
+                toastr.warning('Você Descontou do Seu Carrinho!', 'Desconto Adicionado!');
+              };
+              
+
+              cart.removeItem = function(id){
+                cart_removeCartRow_v2(id);
+                cart.total = carrinho_local();
+                cart.carrinho = JSON.parse(getLocalData("BENJAMIN_USERCART"));
+              }
+              
+              cart.remove_desconto = function(id,valor){
+                cart.total_descontos = parseFloat(cart.total_descontos)+parseFloat(valor);
+                cart.creditos_disponiveis = cart.creditos_disponiveis-valor;
+                setLocalData('total_descontos',cart.total_descontos);
+                cart_removeCartRow_v2(id);
+                cart.total = carrinho_local();
+                cart.carrinho = JSON.parse(getLocalData("BENJAMIN_USERCART"));
+              }
+
+              cart.validar_creditos = function(){
+
+                if(!cart.hash_email_cliente){
+                  alert("voce nao esta logado");
+                  return false;
+                }
+
+
+                $http.post('/voucher/confirma', {"user_token":cart.hash_email_cliente,
+                  "total_descontos":cart.total_descontos}).then(function (response) {
+                    var resposta = response.data;
+
+                    
+                     console.log(resposta);
+                     navigator.vibrate([1000]);
+                     if(resposta.response == 1){
+                      if(cart.total <= 0){
+                        alert("seu carrinho ta pago!");
+                        window.location.replace("/compra/retorno/"+cart.hash_email_cliente);
+                      }else{
+                        $("#form-paypal").submit();
+
+                      }
+
+                     }else{
+                      console.log(resposta);
+                      toastr.error('Nao conseguimos descontar seus creditos!', resposta.msg);
+                     }
+                     
+                 }, function (response) {
+                     console.log(response);
+                     // body...
+                 });
+              }
+
+              cart.pega_email_registrado = function(){
+               // alert("teste");
+               // alert(jQuery("#email_registrado").val());
+                jQuery("#email").val(jQuery("#email_registrado").val());
+                cart.pega_email();
+              }
+              
+              cart.pega_email = function(){
+              //var email = prompt("Qual é o seu email?");
+              var email = jQuery("#email").val();
+              
+              //if (email.toLowerCase() == "escorpião") {
+                var hash = Crypto.MD5(email);
+         
+                jQuery.post('/carregar_dados', {'email':email}).
+                done(function(data){
+                 var dados = JSON.parse(data);
+                 if (!dados.response) {
+                    toastr.error('Você não logou!', 'Falha no login!');
+                  return false;
+                 }
+                 var usuario = JSON.parse(dados.usuario);
+                 if(dados.amigos)
+                  usuario['amigos'] = dados.amigos;
+                 console.log(usuario);
+                 cart.logged_user = usuario;
+                  if(usuario.name){
+                     //console.log(dados.name);
+                     setLocalData("BENJAMIN_USERCART_LOGGED_USER",dados.usuario);
+                     if(dados.amigos)
+                      setLocalData("BENJAMIN_USERCART_LOGGED_USER_FRIENDS",JSON.stringify(dados.amigos));
+                    
+                     toastr.success('Seus dados foram alterados!', 'Dados foram salvos!');
+                      setLocalData("BENJAMIN_USERCART_EMAIL",email);
+                var hash_email_cliente = Crypto.MD5(email);
+                jQuery('#qrcode-profile').qrcode({width: 100,height: 100,text:endereco_site+"pocket.html?usuario="+hash_email_cliente });
+
+                     cart.email_cliente = email;
+                     if(dados.amigos)
+                      cart.logged_user_friends = dados.amigos;
+
+                     cart.hash_email_cliente = hash;
+                     jQuery('#popup-login').modal('hide');
+                   
+         
+                    // jQuery('#popup-login').hide();
+                 }else{
+                     toastr.error('Seus dados nao foram alterados!', 'Dados nao foram salvos!');
+                     
+                 }
+         
+                })
+                //alert(email);
+                //alert(hash);
+              //  }
+         
+              //alert("vai validar "+email+hash);
+             
+              }
+         
+              cart.modal_search = function(){
+               console.log(cart.filtro);
+               if(cart.filtro){
+                 $('#modal-search').modal('show');
+               }else{
+                 $('#modal-search').modal('hide');
+               }
+         
+              }
+         
+              cart.mostra_registrar = function () {
+                  // body...
+                  jQuery("#form-login").slideUp();
+                  jQuery("#form-register").slideDown();
+              }
+
+              cart.logoff = function () {
+                  // body...
+                  setLocalData("BENJAMIN_USERCART_LOGGED_USER",null);
+                  setLocalData("BENJAMIN_USERCART_LOGGED_USER_FRIENDS",null);
+                  setLocalData("BENJAMIN_USERCART_EMAIL",null);
+                window.location.reload();
+              }
+
+              cart.modal_transferir = function(amigo){
+                console.log(amigo);
+                $('#modal_transferir').modal('show');
+              }
+         
+             cart.getFormData = function ($form){
+                 var unindexed_array = $form.serializeArray();
+                 var indexed_array = {};
+         
+                 $.map(unindexed_array, function(n, i){
+                     indexed_array[n['name']] = n['value'];
+                 });
+         
+                 return indexed_array;
+             }
+         
+         
+         
+         
+              cart.registrar_usuario = function(){
+                 //var usuario = jQuery("#formulario-registro").serializeArray();
+                 var $form = $("#form_data");
+                 var usuario ={"name":$("#name").val(),"parent":$("#hash_indicado").val(), "email":$("#email_registro").val(), "password":$("#password").val()};
+                 $http.post("/registrar_usuario",{"usuario":usuario}).then(function (response) {
+                    var resposta = response.data;
+
+                    if(resposta.status == 1){
+                      var date = new Date();  
+                      var btn_logar ='<a href="/pocket.html?registrado='+ date.getTimezoneOffset()+'" class="btn btn-primary">Logar<a>';
+                      toastr.success('Usuario registrado', resposta.mensagem);
+                      jQuery('#popup-login').modal('hide');
+                      jQuery(".popup-login-form").html('<span id="resposta_registro">'+resposta.mensagem+"</span><br>"+btn_logar);
+                      jQuery("#form-login").slideUp();
+                    }else{
+                      toastr.error('Usuario não foi registrado', resposta.mensagem);
+                    }
+                     // body...
+                     console.log(response);
+                 }, function (response) {
+                     console.log(response);
+                     // body...
+                 });
+              }
+              
+              cart.total = carrinho_local();
+              cart_initCart (); 
+          
+          });
+          
+          
+          
+          /*if ('serviceWorker' in navigator) {
+             navigator.serviceWorker.register('offline-service-worker.js');
+          }*/
+      </script>
+   </head>
+   <body data-spy="scroll" data-offset="71" data-target="#navbarRestaurant" ng-controller="CartController as cart">
+      <div id="preloader">
+         <div id="preloader-inner"></div>
+      </div>
+      <!--/preloader-->
+      <header class="header-main header-transparent">
+         <!-- Pushy Menu -->
+         <aside class="pushy pushy-right">
+            <div class="cart-content">
+               <div class="clearfix">
+                  <a href="javascript:void(0)" class="pushy-link text-white-gray">X</a>
+               </div>               
+                    <!--  <a href="" data-toggle="modal" data-target="#myModal" ng-show="cart.email_cliente && !online">
+                        <img class="img-profile" src="images/resto/profile.jpg" ng-show="cart.email_cliente && !online">
+                      </a> 
+
+                     <img class="img-profile float-left" src="images/resto/placeholder.jpg" ng-show="cart.email_cliente && online">
+                     <a href="/perfil" ng-show="cart.email_cliente && online" class="center-title-img">
+                      Meu Perfil
+                     </a>-->
+                     
+               <div class="center-title" ng-show="!cart.email_cliente">
+                  <p>Você precisa logar para pagar seu carrinho. <a class="popup-content menu-btn" href="#popup-login" >Logar.</a></p>
+               </div>
+               <div class="center-title" ng-show="cart.email_cliente">
+                  <p><i class="ti-shopping-cart"></i> Carrinho</p>
+               </div>
+               
+               <hr>
+               <ul class="list-unstyled">
+                  <li class="clearfix" ng-repeat="produto in cart.carrinho track by $index" ng-show="produto.PRESENTATION_NAME">
+                    <!-- <a href="" class="float-left">
+                     <img src="img/foto.jpg" class="img-fluid" alt="" width="60">
+                     </a> -->
+                     <div class="oHidden">
+                        <span class="close" ng-click="cart.removeItem($index)" ng-show='produto.VALUE > 0'><i class="ti-close"></i></span>
+                        <span class="close" ng-click="cart.remove_desconto($index,produto.VALUE)" ng-show='produto.VALUE < 0'><i class="ti-close"></i></span>
+                        <h4><a href="#">{{produto.PRESENTATION_NAME}}</a></h4>
+                        <p class="text-white-gray" ng-show='produto.VALUE > 0'><strong>{{produto.VALUE}}</strong></p>
+                        <p class="text-white-gray" ng-show='produto.VALUE < 0'><strong>Desconto de {{produto.VALUE*-1}}</strong></p>
+                     </div>
+                  </li>
+                  <!--/cart item-->
+                  <span ng-show="cart.email_cliente && online">
+                  <hr>
+                  <h5 class="text-white-gray">Descontar Bencréditos:  {{cart.total_descontos}}</h5>
+                   Seus bencréditos : {{cart.creditos_disponiveis}}
+                   <a href="/perfil">
+                   <h5 class="text-warning-cred text-center" ng-show="cart.creditos_disponiveis <= 0">Compre Bencréditos aqui.</h5></a>
+                    <div class="row" ng-show="cart.creditos_disponiveis > 0">
+                      <a class="btn btn-primary btn-smc mb5" ng-click=cart.adicionar_desconto(13,1) style="margin: auto;"><i class="fa fa-btc"></i>1,00</a>
+                      <a class="btn btn-primary btn-smc mb5" ng-click=cart.adicionar_desconto(14,10) style="margin: auto;"><i class="fa fa-btc"></i>10,00</a>
+                      <!--a class="btn btn-primary btn-smc mb5" ng-click=cart.adicionar_desconto(14,10) style="margin: auto;"><i class="fa fa-btc"></i>10</a>
+                      <a class="btn btn-primary btn-smc mb5" ng-click=cart.adicionar_desconto(14,10) style="margin: auto;"><i class="fa fa-btc"></i>10</a-->
+                    </div>
+                    </span>
+                  <li>
+                    <div class="center-text">
+                      <h5 class="text-white-gray">Fechar compra:</h5>
+                      <h3 class="text-white-gray" id="valor_total_carrinho"> Total : {{cart.total |currency:"R$" }}</h3>
+                    </div>
+                     
+                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="form-paypal">
+                        <!--Tipo do botão-->
+                        <input type="hidden" name="cmd" value="_xclick" />
+                        <!--Vendedor e URL de retorno, cancelamento e notificação-->
+                        <input type="hidden" name="business" value="contasapagar-facilitator@benjaminapadaria.com.br" />
+                        <input type="hidden" name="return" value="https://benjamin-a-padaria.herokuapp.com/compra/retorno/{{cart.hash_email_cliente}}" />
+                        <input type="hidden" name="cancel" value="https://benjamin-a-padaria.herokuapp.com/compra/cancelamento/{{cart.hash_email_cliente}}" />
+                        <input type="hidden" name="notify_url" value="https://benjamin-a-padaria.herokuapp.com/compra/notificacao" />
+                        <!--Internacionalização e localização da página de pagamento-->
+                        <input type="hidden" name="charset" value="utf-8" />
+                        <input type="hidden" name="lc" value="BR" />
+                        <input type="hidden" name="country_code" value="BR" />
+                        <input type="hidden" name="currency_code" value="BRL" />
+                        <input type="hidden" name="tx" value="{{cart.hash_email_cliente}}">
+                        <input type="hidden" name="payer_id" value="{{cart.hash_email_cliente}}">
+                        <input type="hidden" name="invoice" value="{{cart.hash_email_cliente}}@{{cart.cart_ci}}">
+                        <input type="hidden" name="custom" value="{{cart.hash_email_cliente}}">
+                        <input type="hidden" name="at" value="{{cart.hash_email_cliente}}">
+                        <!--Informações sobre o produto e seu valor-->
+                        <input type="hidden" name="amount" value="{{cart.total}}" />
+                        <input type="hidden" name="item_name" value="Servico" />
+                        <input type="hidden" name="quantity" value="1" />
+                        <input type="hidden" name="item_number_1" value="bolinho" />
+                        <input type="hidden" name="item_number_2" value="Sonho" />
+                        <!--Botão para submissão do formulário-->
+                        <!--<input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" ng-show="cart.email_cliente"/> -->
+                         <input type="submit" value="Pagar Paypal" class="btn btn-primary"  border="0"/ ng-show="cart.email_cliente && online"> <!--
+                        <button class="btn btn-primary popup-content menu-btn" href="#popup-bencreditos">Bencréditos</button>-->
+                        <!--input type="button" value="Pagar bencreditos" class="btn btn-primary"  border="0"/ ng-click="cart.validar_creditos()" ng-show="cart.email_cliente && online"-->
+                     </form>
+                  </li>
+               </ul>               
+               <div class="float-right">
+                 <a href="#popup-logoff" class="text-white popup-content menu-btn">
+                   Sair  <i class="ti-share-alt"></i>
+                 </a>
+               </div>
+            </div>
+         </aside>
+         <!-- Site Overlay -->
+         <div class="site-overlay"></div>
+         <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+            <div class="search-inline">
+               <form>
+                  <input type="text" class="form-control" placeholder="Digite sua busca" ng-model="cart.filtro" ng-blur="cart.modal_search()">
+                  <button type="submit"><i class="ti-search"></i></button>
+                  <a href="javascript:void(0)" class="search-close"><i class="ti-close"></i></a>
+               </form>
+            </div>
+            <!--/search form-->          
+            <div class="container">
+               <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarRestaurant" aria-controls="navbarRestaurant" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <a class="navbar-brand" href="/pocket.html">
+               <img class='logo logo-light' src="images/resto/logo.png" alt="">
+               </a>
+               <div  id="navbarRestaurant" class="navbar-collapse collapse">
+                  <ul class="navbar-nav  ml-auto">
+                     <li class="nav-item"><a data-scroll class="nav-link active" href="/pocket.html"> <i class="fa fa-home"></i>  Home</a></li>
+                     <li class="nav-item"><a data-scroll class="nav-link" href="/qrunidade.html">  <i class="fa fa-qrcode"></i> QR Code</a></li>
+                     <li class="nav-item"><a data-scroll class="nav-link" href="#menu">  <i class="fa fa-coffee"></i> Nossos Cardápios</a></li>
+                     <li class="nav-item"><a data-scroll class="nav-link" href="#chefs"> <i class="fa fa-dollar"></i> Bencréditos</a></li>
+                     <li class="nav-item" ng-show="cart.email_cliente && online"><a data-scroll class="nav-link" href="/perfil" ng-show="cart.email_cliente && online"> <i class="fa fa-user" ></i>Meu perfil</a></li>
+                    <!-- <li class="nav-item"  ng-show="cart.email_cliente && online"><a href="/perfil" ng-show="cart.email_cliente && online" class="nav-link">
+                        <img class="img-profile" src="images/resto/profile.jpg" ng-show="cart.email_cliente && online"> Meu perfil
+                        </a>
+                     </li> -->
+
+                     <li class="nav-item"  ng-show="!cart.email_cliente"><a data-scroll class="nav-link btn si-orange btn-primary popup-content" href="#popup-login"> Logar</a></li>
+                      
+                  </ul>
+               </div>
+               <div class="navbar-right-elements">
+                  <ul class="list-inline">
+                    <!-- <li class="list-inline-item"><a href="javascript:void(0)" class="search-open"><i class="ti-search"></i></a></li> -->
+                     <li class="list-inline-item"><a href="javascript:void(0)" class=" menu-btn"><i class="ti-shopping-cart"></i> <span class="badge badge-default btn-primary">{{cart.carrinho.length}}</span></a></li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+      </header>
+      <!--/header-->
+      <!--slider revolution start-->
+      <div class="rev_slider_wrapper oHidden" id="home">
+         <div id="slider1" class="rev_slider fullwidthabanner"  data-version="5.0">
+            <ul>
+               <li data-transition="random">
+                  <!-- MAIN IMAGE -->
+                  <img src="images/resto/croissant-chocolate-aberto.jpg"  alt=""  width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg">
+                  <!-- LAYER NR. 1 -->
+                  <div class="tp-caption tp-resizeme slider-title" 
+                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','15']" 
+                     data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
+                     data-fontsize="['80','80','80','45']"
+                     data-lineheight="['80','80','80','50']"
+                     data-width="none"
+                     data-height="none"
+                     data-transform_idle="o:1;" 
+                     data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                     data-transform_out="auto:auto;s:300;" 
+                     data-start="500"> </div>
+                  <div class="tp-caption tp-resizeme slider-caption" 
+                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','15']" 
+                     data-y="['middle','middle','middle','middle']" data-voffset="['90','90','90','70']" 
+                     data-fontsize="['20','20','20','15']"
+                     data-lineheight="['25','25','25','20']"
+                     data-width="none"
+                     data-height="none" 
+                     data-whitespace="nowrap"
+                     data-transform_idle="o:1;" 
+                     data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                     data-transform_out="auto:auto;s:300;" 
+                     data-start="1000"></div>
+               </li>
+               <li data-transition="random">
+                  <!-- MAIN IMAGE -->
+                  <img src="images/resto/bg2.jpg"  alt=""  width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg">
+                  <!-- LAYER NR. 1 -->
+                  <div class="tp-caption tp-resizeme slider-title" 
+                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                     data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
+                     data-fontsize="['80','80','80','45']"
+                     data-lineheight="['80','80','80','50']"
+                     data-width="none"
+                     data-height="none"
+                     data-transform_idle="o:1;" 
+                     data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                     data-transform_out="auto:auto;s:300;" 
+                     data-start="500">Benjamin</div>
+                  <div class="tp-caption tp-resizeme slider-button" 
+                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                     data-y="['middle','middle','middle','middle']" data-voffset="['160','160','160','120']" 
+                     data-whitespace="nowrap"
+                     data-transform_idle="o:1;" 
+                     data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                     data-transform_out="auto:auto;s:300;" 
+                     data-start="1500"></div>
+               </li>
+               <li data-transition="random">
+                  <!-- MAIN IMAGE -->
+                  <img src="images/resto/Cafe_filtrado-2.jpg"  alt=""  width="1920" height="1000" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg">
+                  <!-- LAYER NR. 1 -->
+                  <div class="tp-caption tp-resizeme slider-title" 
+                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                     data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
+                     data-fontsize="['80','80','80','45']"
+                     data-lineheight="['80','80','80','50']"
+                     data-width="none"
+                     data-height="none"
+                     data-transform_idle="o:1;" 
+                     data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                     data-transform_out="auto:auto;s:300;" 
+                     data-start="500">Café Orfeu</div>
+                  <div class="tp-caption tp-resizeme slider-caption" 
+                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+                     data-y="['middle','middle','middle','middle']" data-voffset="['90','90','90','70']" 
+                     data-fontsize="['20','20','20','15']"
+                     data-lineheight="['25','25','25','20']"
+                     data-width="none"
+                     data-height="none" 
+                     data-whitespace="nowrap"
+                     data-transform_idle="o:1;" 
+                     data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
+                     data-transform_out="auto:auto;s:300;" 
+                     data-start="1000"></div>
+               </li>
+            </ul>
+         </div>
+         <!-- END REVOLUTION SLIDER -->
+      </div>
+      <!-- END OF SLIDER WRAPPER -->
+      <!--end slider revolution-->
+      <div class="bg-primary" id="about">
+         <div class="container pt90 pb60">
+            <div class="row align-items-center">
+               <div class="col-lg-6 mb30">
+                  <h3 class="h1 font300 mb30">Escaneie o QR Code da mesa</h3>
+                  <p class="center-title">
+                     Para identificar qual é sua comanda e sua mesa é necessário escanear o QR Code que esta na mesa em que esta sentado.
+                  </p>
+                  <a href="/qrunidade.html" class="btn btn-outline-light">Escanear</a>
+               </div>
+               <div class="col-lg-6 mb30">
+                <div class="row">
+                  <img src="images/qr4.png" alt="" class="img-center" style="mix-blend-mode: soft-light;">
+                </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--cardapio campanha -->
+      <span ng-include="'/ecom/assan/partials/cardapio_campanhas.html'">
+        
+      </span>
+      <!--cardapio campanha -->
+
+      <div class="pt90 pb60" id="chefs">
+         <div class="container">
+            <div class="center-title">
+               <h2 class="text-warning">BENCRÉDITOS</h2>
+               <p class="text-warning">Aqui você compra créditos que podem ser usados nas suas futuras compras.</p>
+            </div>
+            <div class="row">
+               <div class="owl-carousel owl-theme carousel-cards">
+                  <div class="item">
+                     <a class="card-image" href="/perfil" ng-show="cart.email_cliente">
+                        <img src="images/resto/cred/cred1.png" alt="" class="img-fluid">
+                     </a>
+                     <a class="card-image popup-content" href="#popup-login" ng-show="!cart.email_cliente">
+                        <img src="images/resto/cred/cred1.png" alt="" class="img-fluid">
+                     </a>
+                  </div>
+                  <!--item-->
+                  <div class="item">
+                     <a class="card-image" href="/perfil" ng-show="cart.email_cliente">
+                        <img src="images/resto/cred/cred2.png" alt="" class="img-fluid">
+                     </a>
+                     <a class="card-image popup-content" href="#popup-login" ng-show="!cart.email_cliente">
+                        <img src="images/resto/cred/cred2.png" alt="" class="img-fluid">
+                     </a>
+                  </div>
+                  <!--item-->
+                  <div class="item">
+                     <a class="card-image" href="/perfil" ng-show="cart.email_cliente">
+                        <img src="images/resto/cred/cred5.png" alt="" class="img-fluid">
+                     </a>
+                     <a class="card-image popup-content" href="#popup-login" ng-show="!cart.email_cliente">
+                        <img src="images/resto/cred/cred5.png" alt="" class="img-fluid">
+                     </a>
+                  </div>
+                  <!--item-->
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id='contact'>
+         <div id="markermap" style="width: 100%;height: 350px;"></div>
+      </div>
+      <footer class='footer pt50 pb20'>
+         
+      </footer>
+
+            <div class="modal fade bd-example-modal-sm" id="modal-transferir" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Transferir !</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="modal fade bd-example-modal-sm" id="modal-conectar" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Seu amigo {{cart.nome_indicado}} vai estar na sua rede !</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--modal-->
+      <div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="modal-solicitarTitle" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <form >
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="modal-solicitarTitle">Busca de produtos</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="tab-content">
+                        <div ng-repeat="campanha_lojas in cart.campanhas_lojas[0]" role="tabpanel" class="tab-pane active show fade" id="campanha_{{cart.campanhas[campanha_lojas].CODE}}">
+                           <div class='row'>
+                              <div class='col-md-6 mb20'>
+                                 <article class="media" ng-repeat="produto_code in cart.campanhas[campanha_lojas].PRODUCTS">
+                                    <!--Content -->
+                                    <div class="media-body align-self-center g-pl-10">
+                                       <div class="d-flex justify-content-between mb10">
+                                          <h3 class="align-self-center text-capitalize mb0 h6  font400">{{cart.produtos[produto_code].PRESENTATION_NAME}}</h3>
+                                          <div class="align-self-center">
+                                             <strong class=" font700">
+                                             <button class="btn-icon-sm float-right si-orange si-dark-round si-round" ng-click=cart.adicionar(produto_code)><a class="" href=""><i class="ti-plus"></i></a></button> {{cart.produtos[produto_code].VALUE|currency:"R$"}}</strong>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--/Content -->
+                                 </article>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <div class="modal fade" id="modal-registrar-indicado" tabindex="-1" role="dialog" aria-labelledby="modal-solicitarTitle" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <form >
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" >Registrar</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12 mr-auto popup-login-form">
+                     <form class="form">
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-user"></i>
+                                 </span>
+                              </div>
+                              <input type="hidden" name="hash_indicado" id="hash_indicado" value="{{cart.hash_indicado}}">..
+                              <input type="text"  name="name" class="form-control" placeholder="Nome completo..." ng-model="registrar.name">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-phone"></i>
+                                 </span>
+                              </div>
+                              <input type="text" class="form-control" name="telefone" placeholder="Telefone..." >
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-pencil"></i>
+                                 </span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="CPF...">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-envelope"></i>
+                                 </span>
+                              </div>
+                              <input type="text"  class="form-control" name="email"  placeholder="Email..." ng-model="registrar.email">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-lock"></i>
+                                 </span>
+                              </div>
+                              <input type="password"  placeholder="Senha..." class="form-control" ng-model="registrar.password">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-lock"></i>
+                                 </span>
+                              </div>
+                              <input type="password" placeholder="Confirmar senha..." class="form-control">
+                           </div>
+                        </div>
+                        <div class="form-check">
+                           <label class="form-check-label">
+                           <input class="form-check-input" type="checkbox" value="aceito" checked="false">
+                           <span class="form-check-sign">
+                           <span class="check"></span>
+                           </span>
+                           Eu aceito os
+                           <a href="/termos">termos, condições e politica de privacidade</a>.
+                           </label>
+                        </div>
+                        <div class="text-center">
+                           <div  class="btn btn-primary btn-round" ng-click="cart.registrar_usuario()">Registrar</div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+
+       <div class="modal fade" id="modal-logar-registrado" tabindex="-1" role="dialog"  aria-hidden="true">
+         <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                  <div class="modal-header">
+                     <h4>Login</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+            
+           
+            <form>
+               <div class="form-group">
+                  <input type="text" class="form-control" id="email_registrado" placeholder="Coloque aqui seu email.">
+               </div>
+               <div class="form-group">
+                  <input type="password" class="form-control" id="pass_registrado" placeholder="Senha">
+                 
+               </div>
+               <div class="clearfix">
+                  <div class="modal-footer">
+                     
+                     <button type="button" class="btn btn-primary" ng-click="cart.pega_email_registrado()">Logar</button>
+                  </div>
+               </div>
+           
+            </form>
+          </div>
+          </div>
+         </div>
+      </div>
+      <div  id="popup-login" class="mfp-hide popup-content-area white-popup">
+         <div id="form-login">
+            <h4>Login</h4>
+            <hr>
+            <form>
+               <div class="form-group">
+                  <input type="text" class="form-control" id="email" placeholder="Coloque aqui seu email.">
+               </div>
+               <div class="form-group">
+                  <input type="password" class="form-control" id="pass" placeholder="Senha">
+                  <a href="" class="float-right text-info"></a>
+               </div>
+               <div class="clearfix">
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" ng-click="cart.mostra_registrar()">Registrar</button>
+                     <button type="button" class="btn btn-primary" ng-click="cart.pega_email()">Logar</button>
+                  </div>
+               </div>
+               <hr>
+            <!--   <div class="clearfix">
+                  <div class="text-center">
+                     <p class="lead">Ou logar com</p>
+                  </div>
+                  <ul class="list-inline text-center">
+                     <li class="list-inline-item">
+                        <a href="#" class="social-icon-lg si-dark si-colored-facebook">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-facebook"></i>
+                        </a>
+                     </li>
+                     <li class="list-inline-item">
+                        <a href="#" class="social-icon-lg  si-dark si-colored-twitter">
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-twitter"></i>
+                        </a>
+                     </li>
+                     <li class="list-inline-item">
+                        <a href="#" class="social-icon-lg si-dark si-colored-instagram">
+                        <i class="fa fa-instagram"></i>
+                        <i class="fa fa-instagram"></i>
+                        </a>
+                     </li>
+                  </ul>
+               </div> -->
+            </form>
+         </div>
+         <div id="form-register" style="display: none" class="popup-login-form">
+            <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12 mr-auto">
+                     <form class="form"  id="formulario-registro">
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-user"></i>
+                                 </span>
+                              </div>
+                              
+                              <input type="text" id="name" name="name" class="form-control" placeholder="Nome completo..." ng-model="registrar.name">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-mobile"></i>
+                                 </span>
+                              </div>
+                              <input type="text" class="form-control" name="telefone" placeholder="Telefone...">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-edit"></i>
+                                 </span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="CPF...">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-envelope"></i>
+                                 </span>
+                              </div>
+                              <input type="text"  class="form-control" name="email" id="email_registro" ng-model="registrar.email" placeholder="Email...">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-edit"></i>
+                                 </span>
+                              </div>
+                              <input type="password" id="password" placeholder="Senha..." class="form-control" ng-model="registrar.password">
+                           </div>
+                        </div>
+                        <div class="form-group bmd-form-group">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">
+                                 <i class="fa fa-edit"></i>
+                                 </span>
+                              </div>
+                              <input type="password" id="confirma" placeholder="Confirmar senha..." class="form-control">
+                           </div>
+                        </div>
+                        <div class="form-check">
+                           <label class="form-check-label">
+                           <input class="form-check-input" id="aceito" type="checkbox" value="aceito" checked="false">
+                           <span class="form-check-sign">
+                           <span class="check"></span>
+                           </span>
+                           Eu aceito os
+                           <a href="/termos">termos, condições e politica de privacidade</a>.
+                           </label>
+                        </div>
+                        <div class="text-center">
+                           <div id="registrar" class="btn btn-primary btn-round" ng-click="cart.registrar_usuario()">Registrar</div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div  id="popup-logoff" class="mfp-hide popup-content-area white-popup">
+         <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12 mr-auto">
+                    <h4>Você deseja sair?</h4>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="cart.logoff()">Sim</button>
+                    </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+      <div  id="popup-bencreditos" class="mfp-hide popup-content-area white-popup">
+         <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12 mr-auto">
+                    <h4>Quanto você deseja descontar?</h4>
+                    <div class="row">
+                      <div class="col-md-12 mr-auto">
+                        Saldo: R$ {{cart.logged_user.wallet}}
+                        <br>
+                        Valor da Compra : R$ {{cart.total}}
+                        <br>
+                         <h4 class="text-warning-cred"> Descontar: <input type="text" ng-model="cart.total_transferencia" name=""></h4>
+                         <div class="modal-footer" ng-show="cart.logged_user.wallet > 0">
+                         <button type="button" class="btn btn-primary" ng-click="">Descontar</button>
+                        </div>
+                      </div>
+                   </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel">{{cart.logged_user.name}}</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body" ng-include="'/perfil.html'">
+                 
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary">Salvar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--/modal-->           
+      <div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="modal-solicitarTitle" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <form >
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="modal-solicitarTitle">Busca de produtos</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="tab-content">
+                        <div ng-repeat="campanha_lojas in cart.campanhas_lojas[0]" role="tabpanel" class="tab-pane active show fade" id="campanha_{{cart.campanhas[campanha_lojas].CODE}}">
+                           <div class='row'>
+                              <div class='col-md-6 mb20'>
+                                 <article class="media" ng-repeat="produto_code in cart.campanhas[campanha_lojas].PRODUCTS">
+                                    <!--Content -->
+                                    <div class="media-body align-self-center g-pl-10">
+                                       <div class="d-flex justify-content-between mb10">
+                                          <h3 class="align-self-center text-capitalize mb0 h6  font400">{{cart.produtos[produto_code].PRESENTATION_NAME}}</h3>
+                                          <div class="align-self-center">
+                                             <strong class=" font700">
+                                             <button class="btn-icon-sm float-right si-orange si-dark-round si-round" ng-click=cart.adicionar(produto_code)><a class="" href=""><i class="ti-plus"></i></a></button> {{cart.produtos[produto_code].QTD * cart.produtos[produto_code].VALUE}}</strong>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--/Content -->
+                                 </article>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+
+      <!--modal-->
+      <!--back to top  -->
+      <a href="#" class="back-to-top" id="back-to-top"><i class="ti-angle-up"></i></a>
+      <!-- jQuery first, then Tether, then Bootstrap JS. -->
+      <script src="js/plugins/plugins.js"></script> 
+      <script src="js/restaurant.custom.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.tpls.js"></script>
+      <!--revolution slider-->
+      <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
+      <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+      <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>
+      <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+      <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+      <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+      <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+      <script>
+         jQuery(document).ready(function () {
+             jQuery("#slider1").revolution({
+                 sliderType: "standard",
+                 jsFileLocation: "../revolution/js/",
+                 sliderLayout: "fullscreen",
+                 dottedOverlay: "none",
+                 delay: 9000,
+                 navigation: {
+                     arrows: {enable: true}
+                 },
+                 parallax: {
+                     type: "on",
+                     levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85],
+                     origo: "enterpoint",
+                     speed: 400,
+                     bgparallax: "on",
+                     disable_onmobile: "off"
+                 },
+                 gridwidth: 1140,
+                 gridheight: 600
+             });
+             //alert(Crypto.MD5(getLocalData("BENJAMIN_USERCART_EMAIL")));
+
+             try {
+              if(getLocalData("BENJAMIN_USERCART_EMAIL")){
+                jQuery('#qrcode').qrcode({width: 100,height: 100,text: Crypto.MD5(getLocalData("BENJAMIN_USERCART_EMAIL"))});
+                var hash_email_cliente = Crypto.MD5(getLocalData("BENJAMIN_USERCART_EMAIL"));
+                jQuery('#qrcode-profile').qrcode({width: 100,height: 100,text:endereco_site+"pocket.html?usuario="+hash_email_cliente });
+              }
+            }catch(err) {
+              console.log(err.message);
+            }
+         
+             
+         });
+      </script>
+      <!--google map-->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwVpUj3-oHHW8N21819BhKttOga2Rj2s"></script>
+      <script src="js/jquery.gmap.min.js"></script> 
+      <script>
+         // Marker Map
+         $(document).ready(function () {
+             map = new GMaps({
+                 scrollwheel: false,
+                 el: '#markermap',
+                 lat: -23.561414,
+                 lng: -46.6580706
+         
+             });
+             map.addMarker({
+                 lat: -23.561224,
+                 lng: -46.6580116,
+                 title: 'Benjamin Paulista',
+                 icon : 'http://maps.google.com/mapfiles/kml/shapes/coffee.png',
+                 infoWindow: {
+                     content: '<h4 class="text-warning">Benjamin</h4><p class="text-warning">Unidade Paulista <br> <span style="color:green"> Aberta agora &#10004;</span><br><span class="btn btn-primary ">Solicitar aqui</span></p>'
+                 }
+             });
+         
+             map.addMarker({
+                 lat: -23.5702433,
+                 lng: -46.6634681,
+                 title: 'Benjamin Pamplona',
+                 icon : 'http://maps.google.com/mapfiles/kml/shapes/coffee.png',
+                 infoWindow: {
+                     content: '<h4 class="text-warning">Benjamin</h4><p class="text-warning">Unidade Pamplona <br><span style="color:green"> Aberta agora &#10004;</span><br><span class="btn btn-primary ">Solicitar aqui</span></p>'
+                 }
+             });
+         
+             map.addMarker({
+                 lat: -23.5620054,
+                 lng: -46.6721896,
+                 title: 'Benjamin Oscar Freire I',
+                 icon : 'http://maps.google.com/mapfiles/kml/shapes/coffee.png',
+                 infoWindow: {
+                     content: '<h4 class="text-warning">Benjamin</h4><p class="text-warning">Unidade Oscar Freire I <br> Rua Oscar Freire, 1052 – Cerqueira César<br> <span style="color:green"> Aberta agora &#10004;</span><br><span class="btn btn-primary ">Solicitar aqui</span></p>'
+                 }
+             });
+         
+             map.addMarker({
+                 lat: -23.5650046,
+                 lng: -46.6686824,
+                 title: 'Benjamin Oscar Freire II',
+                 icon : 'http://maps.google.com/mapfiles/kml/shapes/coffee.png',
+                 infoWindow: {
+                     content: '<h4 class="text-warning">Benjamin</h4><p class="text-warning">Unidade Oscar Freire II <br> Rua Oscar Freire, 562 – Cerqueira César<br> <span style="color:green"> Aberta agora &#10004;</span><br><span class="btn btn-primary ">Solicitar aqui</span></p>'
+                 }
+             });
+         });
+      </script> 
+      <!--sky form plugin js-->
+      <script type="text/javascript" src="smart-form/contact-recaptcha/js/jquery.form.min.js"></script>
+      <script type="text/javascript" src="smart-form/contact-recaptcha/js/jquery.validate.min.js"></script>
+      <script type="text/javascript" src="smart-form/contact-recaptcha/js/additional-methods.min.js"></script>
+      <script type="text/javascript" src="smart-form/contact-recaptcha/js/smart-form.js"></script> 
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+      <script type="text/javascript" src="/js/jquery.qrcode.min.js"></script>
+      <script src="/js/assan.custom.js"></script> 
+   </body>
+</html>
