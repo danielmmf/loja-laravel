@@ -47,8 +47,7 @@
         "paypal/paypal-checkout-sdk": "1.0.1",
         "prettus/l5-repository": "^2.6",
         "smartarget/bagisto-whatsapp-contact-us": "^1.0",
-        "tymon/jwt-auth": "^1.0.0",
-        "symfony/translation":"*"
+        "tymon/jwt-auth": "^1.0.0"
     },
     "require-dev": {
         "codeception/codeception": "4.1.1",
@@ -140,6 +139,10 @@
         "post-create-project-cmd": [
             "@php artisan key:generate",
             "Webkul\\Core\\Events\\ComposerEvents::postCreateProject"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ],
         "test": [
             "set -e",
