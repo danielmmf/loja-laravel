@@ -6,9 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
-    'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
+    'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
-    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
+    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
+    'Flynsarmy\\DbBladeCompiler\\' => array($vendorDir . '/flynsarmy/db-blade-compiler/src'),
     'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
 );

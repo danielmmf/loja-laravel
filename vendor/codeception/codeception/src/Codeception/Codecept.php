@@ -1,13 +1,16 @@
 <?php
 namespace Codeception;
 
+use Codeception\Event\DispatcherWrapper;
 use Codeception\Exception\ConfigurationException;
 use Codeception\Subscriber\ExtensionLoader;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class Codecept
 {
-    const VERSION = "2.5.6";
+    use DispatcherWrapper;
+
+    const VERSION = '4.1.1';
 
     /**
      * @var \Codeception\PHPUnit\Runner
@@ -43,6 +46,7 @@ class Codecept
         'html'            => false,
         'xml'             => false,
         'phpunit-xml'     => false,
+        'no-redirect'     => true,
         'json'            => false,
         'tap'             => false,
         'report'          => false,
@@ -206,7 +210,7 @@ class Codecept
         $printer = $this->runner->getPrinter();
         $printer->printResult($result);
 
-        $this->dispatcher->dispatch(Events::RESULT_PRINT_AFTER, new Event\PrintResultEvent($result, $printer));
+        $this->dispatch($this->dispatcher, Events::RESULT_PRINT_AFTER, new Event\PrintResultEvent($result, $printer));
     }
 
     /**
