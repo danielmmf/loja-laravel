@@ -47,7 +47,8 @@
         "paypal/paypal-checkout-sdk": "1.0.1",
         "prettus/l5-repository": "^2.6",
         "smartarget/bagisto-whatsapp-contact-us": "^1.0",
-        "tymon/jwt-auth": "^1.0.0"
+        "tymon/jwt-auth": "^1.0.0",
+        "symfony/translation":"*"
     },
     "require-dev": {
         "codeception/codeception": "4.1.1",
