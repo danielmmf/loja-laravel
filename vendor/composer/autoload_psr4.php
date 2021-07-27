@@ -119,7 +119,7 @@ return array(
     'Konekt\\Concord\\' => array($vendorDir . '/konekt/concord/src'),
     'Kalnoy\\Nestedset\\' => array($vendorDir . '/kalnoy/nestedset/src'),
     'JmesPath\\' => array($vendorDir . '/mtdowling/jmespath.php/src'),
-    'Intervention\\Image\\' => array($vendorDir . '/intervention/imagecache/src/Intervention/Image', $vendorDir . '/intervention/image/src/Intervention/Image'),
+    'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image', $vendorDir . '/intervention/imagecache/src/Intervention/Image'),
     'Illuminate\\Foundation\\Auth\\' => array($vendorDir . '/laravel/ui/auth-backend'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Stream\\' => array($vendorDir . '/ezimuel/guzzlestreams/src'),
